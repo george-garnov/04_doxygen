@@ -6,31 +6,24 @@ else()
     project(test VERSION 0.0.1)
 endif()
 
-add_executable(${PROJECT_NAME} test.cpp)
-
-set_target_properties(
-        ${PROJECT_NAME} PROPERTIES
-        CXX_STANDARD 14
-        CXX_STANDARD_REQUIRED ON
-        COMPILE_OPTIONS -Wpedantic -Wall -Wextra
-)
-
-enable_testing()
 find_package(GTest REQUIRED)
+
 include_directories(${GTEST_INCLUDE_DIR})
 
-add_executable(version_test tests.cpp)
-target_link_libraries(version_test
+add_executable(${PROJECT_NAME} test.cpp)
+
+target_link_libraries(test
   ${GTEST_BOTH_LIBRARIES}
-  version_lib
+  version
   pthread
 )
 
-set_target_properties(ip_filter version_test PROPERTIES
+set_target_properties(
+  ${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 14
   CXX_STANDARD_REQUIRED ON
   COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
-set_target_properties(version_test PROPERTIES
-  INCLUDE_DIRECTORIES ${GTEST_INCLUDE_DIRS}
+add_test(test ${PROJECT_NAME})
+enable_testing()
