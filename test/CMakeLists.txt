@@ -12,7 +12,8 @@ include_directories(${GTEST_INCLUDE_DIR})
 
 add_executable(${PROJECT_NAME} test.cpp)
 
-target_link_libraries(test
+target_link_libraries(
+  test
   ${GTEST_BOTH_LIBRARIES}
   version
   pthread
@@ -26,4 +27,5 @@ set_target_properties(
 )
 
 add_test(test ${PROJECT_NAME})
+
 enable_testing()
