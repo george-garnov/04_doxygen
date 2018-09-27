@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 
 if (DEFINED ENV{TRAVIS_BUILD_NUMBER})
-    project(test VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+    project(tests VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 else()
-    project(test VERSION 0.0.1)
+    project(tests VERSION 0.0.1)
 endif()
 
 find_package(GTest REQUIRED)
@@ -22,10 +22,10 @@ set_target_properties(
 target_link_libraries(
   ${PROJECT_NAME}
   ${GTEST_BOTH_LIBRARIES}
-  version
   pthread
+  version
 )
 
-add_test(test ${PROJECT_NAME})
+add_test(tests ${PROJECT_NAME})
 
 enable_testing()
