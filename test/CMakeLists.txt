@@ -12,20 +12,20 @@ include_directories(${GTEST_INCLUDE_DIR})
 
 add_executable(${PROJECT_NAME} test.cpp)
 
+set_target_properties(
+        ${PROJECT_NAME} PROPERTIES
+        CXX_STANDARD 14
+        CXX_STANDARD_REQUIRED ON
+        COMPILE_OPTIONS -Wpedantic -Wall -Wextra
+)
+
 target_link_libraries(
-  test
+  ${PROJECT_NAME}
   ${GTEST_BOTH_LIBRARIES}
   version
   pthread
 )
 
-set_target_properties(
-  ${PROJECT_NAME} PROPERTIES
-  CXX_STANDARD 14
-  CXX_STANDARD_REQUIRED ON
-  COMPILE_OPTIONS -Wpedantic -Wall -Wextra
-)
-
-add_test(test ${PROJECT_NAME})
+add_test(tests ${PROJECT_NAME})
 
 enable_testing()
