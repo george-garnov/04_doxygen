@@ -26,6 +26,6 @@ target_link_libraries(
   pthread
 )
 
-add_test(tests ${PROJECT_NAME})
+add_test(test ${PROJECT_NAME})
 
 enable_testing()
