@@ -14,9 +14,6 @@ template <typename ...T> struct is_tuple<std::tuple<T...>>: std::true_type {};
 
 template<typename Type> constexpr bool type_is_tuple()
 {
-  // if (is_tuple<Type>::value)  return true;
-  
-  // return false;
   return is_tuple<Type>::value;
 }
 
