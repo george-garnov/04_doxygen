@@ -5,9 +5,9 @@
 #include <tuple>
 
 
-// /**
-//  * Проверка на std::tuple.
-//  */
+/**
+ * Проверка на std::tuple.
+ */
 template <typename> struct is_tuple: std::false_type {};
 
 template <typename ...T> struct is_tuple<std::tuple<T...>>: std::true_type {};
@@ -17,13 +17,17 @@ template<typename Type> constexpr bool type_is_tuple()
   return is_tuple<Type>::value;
 }
 
-
+/**
+* print() для неопределенных типов
+*/
 void print(...)
 {
     std::cout << "undefined type";
 }
 
-// специализация для целочисленных типов
+/**
+* Специализация print() для целочисленных типов
+*/
 template <typename T>
 typename std::enable_if<std::is_integral<T>::value, void>::type
 print(T value)
@@ -37,7 +41,9 @@ print(T value)
   }
 }
 
-// специализация для std::string
+/**
+* Специализация print() для std::string
+*/
 template<typename T>
 typename std::enable_if<std::is_same<T, std::string>::value, void>::type
 print(const T &value)
@@ -45,7 +51,9 @@ print(const T &value)
   std::cout << value;
 }
 
-// специализация для контейнеров
+/**
+* Специализация print() для контейнеров
+*/
 template <typename T>
 typename std::enable_if<std::is_same<T, std::vector<typename T::value_type>>::value ||
                         std::is_same<T, std::list<typename T::value_type>>::value, void>::type
@@ -62,7 +70,7 @@ print(T container)
 
 namespace tpl
 {
-/*
+/**
  * Главная роль здесь у шаблона класса iterate_tuple.
     
  * Первый параметр шаблона класса iterate_tuple имеет тип int (index).
@@ -91,7 +99,9 @@ namespace tpl
     }
   };
     
-  // Частичная специализация для индекса 0 (завершает рекурсию)
+  /**
+  * Частичная специализация для индекса 0 (завершает рекурсию)
+  */
   template<typename Callback, typename... Args>
   struct iterate_tuple<0, Callback, Args...> 
   {
@@ -101,7 +111,9 @@ namespace tpl
     }
   };
 
-  // Частичная специализация для индекса -1 (пустой кортеж)
+  /**
+   * Частичная специализация для индекса -1 (пустой кортеж)
+   */
   template<typename Callback, typename... Args>
   struct iterate_tuple<-1, Callback, Args...>
   {
@@ -112,9 +124,9 @@ namespace tpl
   };
 }
 
-//
-// "Волшебный" print_tuple для обхода элементов кортежа (compile time!):
-//
+/**
+* print_tuple для обхода элементов кортежа (compile time!):
+*/
 template<typename Callback, typename... Args>
 void print_tuple(std::tuple<Args...>& t, Callback callback) 
 {
@@ -126,9 +138,9 @@ void print_tuple(std::tuple<Args...>& t, Callback callback)
 }
 
 
-// Код функции print_tuple опущен для простоты примера 
-// (его лучше вынести в отдельный файл *.h)
-
+/**
+* Вызывается для печати элементов кортежа
+*/
 struct callback
 {
   template<typename T>
@@ -138,7 +150,9 @@ struct callback
   }
 };
 
-
+/**
+* Специализация print() для tuple
+*/
 template<typename T>
 typename std::enable_if<type_is_tuple<T>(), void>::type
 print(T tuple)
@@ -147,6 +161,9 @@ print(T tuple)
    print_tuple(tuple, callback());
 }
 
+/**
+* Специализация print() для Args... args
+*/
 template<typename... Args>
 void print(Args... args)
 {
