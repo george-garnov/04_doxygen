@@ -43,16 +43,16 @@ int main()
   print(l);
   std::cout << std::endl;
   
-  //Опционально. Печать адреса как std::tuple
-  print(std::make_tuple(char(-1), short(0), int(2130706433), long(8875824491850138409)));
-  std::cout << std::endl;
-  print(char(-1), 42, 100000);
-  std::cout << std::endl;
+  // //Опционально. Печать адреса как std::tuple
+  // print(std::make_tuple(char(-1), short(0), int(2130706433), long(8875824491850138409)));
+  // std::cout << std::endl;
+  // print(char(-1), 42, 100000);
+  // std::cout << std::endl;
     
     
-  // float
-  print(1.2345);
-  std::cout << std::endl;
+  // // float
+  // print(1.2345);
+  // std::cout << std::endl;
 
   return 0;
 }
