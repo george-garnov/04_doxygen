@@ -138,8 +138,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">for</span>(<span class="keyword">auto</span> value : container)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::cout &lt;&lt; split;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="print_8h.html#a428513e838de3670e09b242cde1f0f6b">print</a>(value);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    split = <span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="print_8h.html#a428513e838de3670e09b242cde1f0f6b">print</a>(<span class="keywordtype">char</span>(value));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    split = <span class="stringliteral">&quot;.&quot;</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
@@ -152,7 +152,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      <span class="comment">// Уменьшаем позицию и рекурсивно вызываем этот же метод </span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <a class="code" href="structtpl_1_1iterate__tuple.html#a97020120f383f209acc79ca366700cdd">iterate_tuple&lt;index - 1, Callback, Args...&gt;::next</a>(t, callback);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;.&quot;</span>;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="comment">// Вызываем обработчик и передаем ему позицию и значение элемента</span></div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      callback(index, std::get&lt;index&gt;(t));</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
@@ -193,7 +193,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="structcallback.html#a15d3f37897c3847adc3104780c80e109">  147</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="structcallback.html#a15d3f37897c3847adc3104780c80e109">operator()</a>(<span class="keywordtype">int</span> index, T&amp;&amp; t) <span class="comment">// index - это позиция элемента в кортеже</span></div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  {                                 <span class="comment">// t - значение элемента</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <a class="code" href="print_8h.html#a428513e838de3670e09b242cde1f0f6b">print</a>(t);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <a class="code" href="print_8h.html#a428513e838de3670e09b242cde1f0f6b">print</a>(<span class="keywordtype">char</span>(t));</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  }</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;};</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
