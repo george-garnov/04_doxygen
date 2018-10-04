@@ -63,7 +63,7 @@ print(T container)
   for(auto value : container)
   {
     std::cout << split;
-    std::cout << value;//print(value);
+    print(char(value));
     split = ".";
   }
 }
@@ -146,7 +146,7 @@ struct callback
   template<typename T>
   void operator()(int index, T&& t) // index - это позиция элемента в кортеже
   {                                 // t - значение элемента
-    std::cout << value;//print(t);
+    print(char(t));
   }
 };
 
