@@ -63,8 +63,8 @@ print(T container)
   for(auto value : container)
   {
     std::cout << split;
-    print(value);
-    split = ",";
+    std::cout << value;//print(value);
+    split = ".";
   }
 }
 
@@ -93,7 +93,7 @@ namespace tpl
     {
       // Уменьшаем позицию и рекурсивно вызываем этот же метод 
       iterate_tuple<index - 1, Callback, Args...>::next(t, callback);
-      std::cout << ",";
+      std::cout << ".";
       // Вызываем обработчик и передаем ему позицию и значение элемента
       callback(index, std::get<index>(t));
     }
@@ -146,7 +146,7 @@ struct callback
   template<typename T>
   void operator()(int index, T&& t) // index - это позиция элемента в кортеже
   {                                 // t - значение элемента
-    print(t);
+    std::cout << value;//print(t);
   }
 };
 
